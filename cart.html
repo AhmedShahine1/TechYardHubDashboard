@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="CSS/cart.css">
+</head>
+
+<body>
+
+
+    <section class="container-fluid">
+        <div class="row justify-content-start">
+
+            <!-- Sidebar content (for mobile layout) -->
+            <div class="col-12 sidebar-content d-md-none  pb-0">
+
+                <div class="d-flex justify-content-between align-items-center bt">
+                    <div class="d-flex justify-content-start align-items-center " id="backToStore2">
+                        <i class="fa-solid fa-angle-left fs-3"></i>
+                        <p class="p-0 m-0 ms-3">BACK TO STORE</p>
+                    </div>
+
+                </div>
+
+
+                <h1 class="fs-3 mt-4">Shopping Cart</h1>
+                
+
+            </div>
+
+
+
+
+
+
+
+
+            <!-- Main content -->
+            <div class="col-12 col-md-9 " id="mainContent">
+                <div class=" justify-content-between align-items-center back-Main-desktop mt-3 " >
+                    <div class="d-flex justify-content-start align-items-center bt" id="backToStore1">
+                        <i class="fa-solid fa-angle-left fs-3"></i>
+                        <p class="p-0 m-0 ms-3">BACK TO STORE</p>
+                    </div>
+                    <div id="backArrow">
+                        <i class="fa-solid fa-angle-left fs-3"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="row justify-content-between align-items-center back-Main-desktop">
+                        <div class="col-10">
+                            <h1 class="shopping fs-1 my-4">Shopping Cart</h1>
+                        </div>
+                        <div class="col-2 text-center">
+                            <p><span id="count"></span> ITEMS</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 ">
+                        <div class="row my-2 tableHead">
+                            <div class="col-2">
+                                <p>Item</p>
+                            </div>
+                            <div class="col-2"></div>
+                            <div class="col-2 text-center">
+                                <p>OS</p>
+                            </div>
+                            <div class="col-2 text-center">
+                                <p>Quantity</p>
+                            </div>
+                            <div class="col-2 text-center">
+                                <p>Price</p>
+                            </div>
+                            <div class="col-2 text-center"></div>
+                        </div>
+
+
+
+                        <div id="inner-table" class="cont-main"></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Sidebar (desktop view) -->
+        <div class="sidebar d-none d-md-block px-3">
+            <div class="d-flex justify-content-end pt-3">
+                <i class="fa-solid fa-xmark fs-3"></i>
+            </div>
+            <h1 class="fs-3 mt-4 mb-5">Summary</h1>
+            <div class="row mt mb-2">
+                <div class="col-6 text-start">
+                    <p>Subtotal</p>
+                </div>
+                <div class="col-6 text-end">
+                    <p><span class="subtotal"></span> LE</p>
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-6 text-start">
+                    <p>Shipping</p>
+                </div>
+                <div class="col-6 text-end">
+                    <p><span class="shipping"></span> LE</p>
+                </div>
+            </div>
+            <div class="row my-2">
+                <div class="col-6 text-start">
+                    <p>Tax</p>
+                </div>
+                <div class="col-6 text-end">
+                    <p><span class="tax"> </span> LE</p>
+                </div>
+            </div>
+            <div class="position-absolute pos px-3">
+                <div class="d-flex justify-content-between my-2">
+                    <p class="fs-3">Total</p>
+                    <p class="fs-4"><span class="total"></span> LE</p>
+                </div>
+                <button class="btn btn-dark p-2 w-100 text-center fs-4 goToCheckout">CHECKOUT</button>
+            </div>
+        </div>
+
+
+        <!-- Checkout button for mobile layout -->
+        <div class="mobile-checkout d-flex flex-column justify-content-center align-items-center d-md-none bg  px-2">
+            <div class=" w-100">
+                <div class="row mt-4 mb-2">
+                    <div class="col-6 text-start">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="col-6 text-end">
+                        <p><span class="subtotal"></span> LE</p>
+                    </div>
+                </div>
+                <div class="row my-2">
+                    <div class="col-6 text-start">
+                        <p>Shipping</p>
+                    </div>
+                    <div class="col-6 text-end">
+                        <p><span class="shipping"></span> LE</p>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-6 text-start">
+                        <p>Tax</p>
+                    </div>
+                    <div class="col-6 text-end">
+                        <p><span class="tax"></span> LE</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-dark d-flex justify-content-between align-items-center fs-4 p-3 goToCheckout">
+                <p class="p-0 m-0">CHECKOUT</p>
+                <p class="p-0 m-0">Total: <span class="total m-0 p-0"></span> LE</p>
+            </button>
+        </div>
+    </section>
+
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="../JS/itemsData.js"></script> -->
+    <script  src="JS/cart.js"></script>
+</body>
+
+</html>

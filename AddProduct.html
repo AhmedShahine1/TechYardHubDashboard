@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product</title>
+</head>
+<body>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 
@@ -19,9 +29,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/Home.css" rel="stylesheet">
-
-        <!-- Custom styles for this page -->
-        <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/AddProduct.css">
 
 </head>
 
@@ -162,48 +170,77 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                  <div class="form-container">
+                    <h1>Add Product</h1>
+                    <form id="addProductForm" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label for="name">Product Name</label>
+                        <input type="text" id="name" name="name" required>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" required></textarea>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="oldPrice">Old Price (£)</label>
+                        <input type="number" id="oldPrice" name="oldPrice" step="0.01" required>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="discount">Discount (%)</label>
+                        <input type="number" id="discount" name="discount" step="1">
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="categoriesId">Category</label>
+                        <select id="categoriesId" name="categoriesId" required>
+                          <option value="">Select Category</option>
+                        </select>
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="model">Model</label>
+                        <input type="text" id="model" name="model">
+                      </div>
+                
+                      <div class="form-group">
+                        <label for="os">Operating System</label>
+                        <input type="text" id="os" name="os">
+                      </div>
+                
+                      <div class="form-group">
+                        <label>Product Images</label>
+                        <input type="file" id="image" name="image">
+                        <input type="file" id="imageInHover" name="imageInHover">
+                      </div>
+                
+                      <div class="form-group">
+                        <label>Additional Images</label>
+                        <div id="additionalImagesContainer">
+                          <input type="file" name="productDetailsImage[]" class="additional-image">
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
+                        <button type="button" id="addImageButton">+ Add Image</button>
+                      </div>
+                
+                      <div class="form-group">
+                        <label>
+                          <input type="checkbox" id="soldOut" name="soldOut"> Sold Out
+                        </label>
+                      </div>
+                
+                      <div class="form-group">
+                        <label>
+                          <input type="checkbox" id="popular" name="popular"> Popular
+                        </label>
+                      </div>
+                
+                      <button type="submit" class="submit-button">Add Product</button>
+                    </form>
+                  </div>
+                  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                  <script type="module" src="js/AddProduct.js"></script>              
                 </div>
                 <!-- /.container-fluid -->
 
@@ -228,18 +265,14 @@
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-
 </body>
 
 </html>

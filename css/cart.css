@@ -1,0 +1,271 @@
+:root {
+    --background-gray-color: rgb(223,223,223);
+    --button-gray-color: rgb(223,223,223);
+    --white-color: white;
+}
+
+
+
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* .page-exit {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.75s ease, opacity 0.75s ease;
+}
+
+.page-enter {
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.75s ease, opacity 0.75s ease;
+}
+
+.page-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+} */
+/* 
+.content-enter {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.content-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+.new-content {
+    opacity: 0; 
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bt{
+    cursor: pointer;
+
+}
+
+
+.sidebar {
+    color: black;
+    background-color: var(--background-gray-color);
+    height: 100vh;
+    width: 25%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateX(0);
+}
+
+.sidebar.hidden {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.sidebar.expanded {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+#mainContent {
+    transition: width 0.5s ease;
+}
+
+#mainContent.expanded {
+    width: 100%;
+}
+
+
+.square-cover {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+
+}
+
+.square-cover img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+
+}
+
+
+.cover-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(237, 237, 237);
+}
+
+
+
+
+i {
+    cursor: pointer;
+}
+
+.pos {
+    top: 86%;
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+
+.mt {
+    margin-top: 12%;
+}
+
+
+#backArrow {
+    transition: opacity 0.5s ease;
+    /* تأثير الانتقال على الشفافية */
+    opacity: 0;
+    /* القيمة الأصلية للشعاع */
+}
+
+#backArrow.show {
+    opacity: 1;
+    /* إخفاء السهم للخلف */
+}
+
+
+
+
+.cont-main {
+    max-height: 82vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.cont-main::-webkit-scrollbar {
+    display: none;
+}
+
+
+.sidebar-content,
+.mobile-checkout,
+.back-to-store-mobile {
+    display: none;
+}
+
+/* Desktop view */
+@media (min-width: 768px) {
+    .sidebar {
+        display: block;
+    }
+
+    .sidebar-content,
+    .mobile-checkout,
+    .back-to-store-mobile {
+        display: none;
+    }
+
+
+    .back-Main-desktop {
+        display: flex;
+    }
+
+
+    .tableHead {
+        display: flex;
+    }
+
+
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+
+    .back-Main-desktop {
+        display: none;
+    }
+
+    .back-to-store-mobile {
+        display: block;
+        padding: 10px;
+    }
+
+    .tableHead {
+        display: none;
+    }
+
+    .sidebar-content {
+        display: block;
+        padding: 20px;
+        /* background-color: var(--background-gray-color); */
+
+    }
+
+    #mainContent {
+        padding-top: 20px;
+    }
+
+    .mobile-checkout {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 10;
+        padding-bottom: 5px;
+        background-color: var(--background-gray-color);
+
+    }
+
+    .mobile-checkout button {
+        width: 100%;
+        margin: 0px;
+    }
+
+    .sidebar {
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .cont-main {
+        max-height: 68vh;
+        scrollbar-width: none;
+    }
+
+    .cont-main::-webkit-scrollbar {
+        display: none;
+    }
+    .colr-yellow{
+        color: rgb(255, 187, 0);
+    
+    }
+}

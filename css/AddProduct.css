@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+body {
+  font-family: "Playfair Display", serif;
+}
+
+.container-fluid {
+  margin-bottom: 20px;
+}
+.container-fluid .form-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+.container-fluid .form-container h1, .container-fluid .form-container h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+.container-fluid .form-container .form-group, .container-fluid .form-container .feature-group {
+  margin-bottom: 15px;
+}
+.container-fluid .form-container .form-group label, .container-fluid .form-container .feature-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.container-fluid .form-container .form-group input, .container-fluid .form-container .form-group textarea, .container-fluid .form-container .feature-group input, .container-fluid .form-container .feature-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.container-fluid .form-container .submit-button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.container-fluid .form-container .submit-button:hover {
+  background-color: #218838;
+}/*# sourceMappingURL=AddProduct.css.map */

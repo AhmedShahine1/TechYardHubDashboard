@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chcek Out</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+
+<body>
+
+
+    <div class="row main-content ">
+
+        <!-- i weant this to be col-12 -->
+        <div class="col-9 bg-lgray make-w-100">
+
+            <div class="row p-2">
+
+
+                <!-- Labtop -->
+                <div class="col-3 ps-3 main">
+                    <div class="left-up">
+                        <div class="out-img">
+                            <img class="w-100" src="../Images/tech-yard-hub-logo-black.png" alt="">
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="left-down">
+                        <p class="fs-2">checkout</p>
+                    </div>
+                </div>
+
+
+                <!-- mobile -->
+                <div class="row text-start mb-5 bg-lgray mobile">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between py-2 fs-2">
+                            <div class="out-img">
+                                <img class="w-100" src="../Images/tech-yard-hub-logo-black.png" alt="">
+                            </div>
+                        </div>
+                        <p class="fs-2">Checkout</p>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-9 scrl make-w-100">
+
+                    <div class="left-up main"></div>
+
+                    <!-- labtop & mobile -->
+
+                    <div class="first-check-step first active">
+                        <p class="fs-1 pb-5 fade-in">Who is placing this order ?</p>
+
+                        <div class="checkout">
+                            <form action="">
+                                <div class="position-relative inp fade-in">
+                                    <input type="text" class="form-control no-focus-style" id="email" placeholder=" "
+                                        value="">
+                                    <label for="email" class="position-absolute input-up">Email *</label>
+                                    <p class="error-message" style="color: red; display: none;">Invalid email.</p>
+                                </div>
+
+                                <div class="inp d-flex justify-content-between my-5">
+                                    <div class="position-relative inp2 fade-in">
+                                        <input type="text" class="form-control no-focus-style" id="fname"
+                                            placeholder=" " value="">
+                                        <label for="fname" class="position-absolute input-up">First Name *</label>
+                                        <p class="fname-message" style="color: red; display: none;">First name is
+                                            required.</p>
+                                    </div>
+
+                                    <div class="position-relative inp2 fade-in">
+                                        <input type="text" class="form-control no-focus-style" id="lname"
+                                            placeholder=" " value="">
+                                        <label for="lname" class="position-absolute input-up">Last Name *</label>
+                                        <p class="lname-message" style="color: red; display: none;">Last name is
+                                            required.</p>
+
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-dark p-3 mt-4 border-none proceed fade-in" >PRECEED TO
+                                    SHIPPING</button>
+                            </form>
+                        </div>
+
+                    </div>
+
+                    <div class="first-check-step second ">
+                        <p class="fs-1 pb-5 fade-in">Where would you like your order sent ?</p>
+
+                        <div class="checkout">
+                            <form action="">
+                                <div class="position-relative inp mb-5 fade-in">
+                                    <input type="text" class="form-control no-focus-style" id="Country" placeholder=" "
+                                        value="">
+                                    <label for="Country" class="position-absolute input-up">Country *</label>
+                                    <p class="country-message" style="color: red; display: none;">please enter your
+                                        country name.</p>
+
+                                </div>
+
+
+                                <div class="position-relative inp my-5 fade-in">
+                                    <input type="text" class="form-control no-focus-style" id="Address" placeholder=" "
+                                        value="">
+                                    <label for="Address" class="position-absolute input-up">Address *</label>
+                                    <p class="add-message" style="color: red; display: none;">please enter your
+                                        Address .</p>
+
+                                </div>
+
+
+                                <div class="inp d-flex justify-content-between my-5 fade-in">
+                                    <div class="position-relative inp2 ">
+                                        <input type="text" class="form-control no-focus-style" id="city" placeholder=" "
+                                            value="">
+                                        <label for="city" class="position-absolute input-up">City *</label>
+                                        <p class="city-message" style="color: red; display: none;">please enter your
+                                            city name.</p>
+
+                                    </div>
+
+                                    <div class="position-relative inp2 ">
+                                        <input type="text" class="form-control no-focus-style" id="zcode"
+                                            placeholder=" " value="">
+                                        <label for="zcode" class="position-absolute input-up">Zip code *</label>
+                                        <p class="zip-message" style="color: red; display: none;">please enter your
+                                            zip code.</p>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="position-relative inp fade-in">
+                                    <input type="text" class="form-control no-focus-style" id="stateProvince"
+                                        placeholder=" " value="">
+                                    <label for="stateProvince" class="position-absolute input-up">State/Province</label>
+                                    <p class="ps-message" style="color: red; display: none;">please enter your
+                                        State/Province.</p>
+
+                                </div>
+
+
+
+                                <div class="inp d-flex justify-content-between my-5 fade-in">
+
+
+                                    <div class="position-relative inp2">
+                                        <input type="tel" class="form-control no-focus-style" id="ccode" placeholder=" "
+                                            value="">
+                                        <label for="ccode" class="position-absolute input-up">Country code</label>
+                                        <p class="ccode-message" style="color: red; display: none;">please enter your
+                                            country code.</p>
+                                    </div>
+
+
+                                    <div class="position-relative inp2 ">
+                                        <input type="tel" class="form-control no-focus-style" id="phone" placeholder=" "
+                                            value="">
+                                        <label for="phone" class="position-absolute input-up">Phone number *</label>
+                                        <p class="phone-message" style="color: red; display: none;">please enter your
+                                            phone number.</p>
+
+                                    </div>
+                                </div>
+
+                                <div class="my-4">
+                                    <p class="fs-2 fade-in">Delivery options</p>
+
+                                    <div class="radio-group mt-4 ">
+                                        <div class="radio-row fade-in">
+                                            <input type="radio" id="itemRadio1" name="itemGroup" />
+                                            <label for="itemRadio1">
+                                                <span class="radio-text"> Europe Standard (3-4 business days) Shipping .
+                                                </span>
+                                            </label>
+                                            <span class="price">$29.99</span>
+                                        </div>
+
+                                        <div class="radio-row mt-4 fade-in">
+                                            <input type="radio" id="itemRadio2" name="itemGroup" />
+                                            <label for="itemRadio2">
+                                                <span class="radio-text">Europe Express (1-2 business days) Shipping
+                                                    .</span>
+                                            </label>
+                                            <span class="price">$39.99</span>
+                                        </div>
+                                        <p class="radio-error-message" style="color: red; display: none;">please select
+                                            one.</p>
+                                    </div>
+
+                                </div>
+
+                                <button class="btn btn-dark p-3 my-5 border-none proceed fade-in" >PRECEED TO
+                                    PAYMENT</button>
+                            </form>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+                    <div class="first-check-step third ">
+                        <p class="fs-1 pb-5 fade-in">How would you like to Pay ?</p>
+
+                        <div class="checkout">
+
+                            <form action="">
+
+                                <div class="my-4 ">
+
+                                    <div class="radio-group mt-4">
+                                        <div class="radio-row  fade-in">
+                                            <input type="radio" id="itemRadio21" name="itemGroup2" />
+                                            <label for="itemRadio21">
+                                                <span class="radio-text"> Pay with Credit Card
+                                                </span>
+                                            </label>
+                                        </div>
+
+                                        <div class="radio-row mt-4  fade-in">
+                                            <input type="radio" id="itemRadio22" name="itemGroup2" />
+                                            <label for="itemRadio22">
+                                                <span class="radio-text">Pay with PayPal
+                                                </span>
+                                            </label>
+                                        </div>
+
+
+                                        <div class="radio-row mt-4  fade-in">
+                                            <input type="radio" id="itemRadio23" name="itemGroup2" />
+                                            <label for="itemRadio23">
+                                                <span class="radio-text">Use giftcard
+                                                </span>
+                                            </label>
+                                        </div>
+
+
+                                    </div>
+                                    <p class="radio-error-message2" style="color: red; display: none;">please select one.
+                                    </p>
+                                </div>
+
+
+
+                                <div class="position-relative inp mb-5 fade-in">
+                                    <input type="text" class="form-control no-focus-style" id="NOCard" placeholder=" "
+                                        value="">
+                                    <label for="NOCard" class="position-absolute input-up">Name on card</label>
+                                    <p class="NOCard-message" style="color: red; display: none;">Name On Card is
+                                        required.</p>
+                                </div>
+
+
+
+
+                                <div class="position-relative inp my-5 fade-in">
+                                    <input type="text" class="form-control no-focus-style" id="cnumber" placeholder=" "
+                                        value="">
+                                    <label for="cnumber" class="position-absolute input-up">Card number</label>
+                                    <p class="cnumber-message" style="color: red; display: none;">Card number is
+                                        required.</p>
+                                </div>
+
+
+
+
+                                <div class="inp d-flex justify-content-between my-5 fade-in">
+                                    <div class="position-relative inp2 ">
+                                        <input type="text" class="form-control no-focus-style" id="Expiration"
+                                            placeholder=" " value="">
+                                        <label for="Expiration" class="position-absolute input-up">Expiration</label>
+                                        <p class="Expiration-message" style="color: red; display: none;">Expiration is
+                                            required.</p>
+                                    </div>
+
+                                    <div class="position-relative inp2 ">
+                                        <input type="text" class="form-control no-focus-style" id="ccv" placeholder=" "
+                                            value="">
+                                        <label for="ccv" class="position-absolute input-up">CCV</label>
+                                        <p class="ccv-message" style="color: red; display: none;">ccv is
+                                            required.</p>
+                                    </div>
+
+                                </div>
+
+
+
+
+
+                                <div class="checkbox-group my-3 fade-in">
+                                    <input type="checkbox" id="option1" class="custom-checkbox" />
+                                    <label for="option1">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        Use shipping addres as billing address
+                                    </label>
+                                </div>
+
+                                <div class="checkbox-group fade-in">
+                                    <input type="checkbox" id="option2" class="custom-checkbox" />
+                                    <label for="option2">
+                                        <span class="checkmark"><i class="fas fa-check"></i></span>
+                                        I accept TYH Terms & Conditions
+                                    </label>
+                                </div>
+
+                                <p class="checkbox-error-message" style="display: none; color: red;">Please select at
+                                    least one option.</p>
+
+
+
+
+
+                                <button class="btn btn-dark p-3 my-5 border-none proceed fade-in GoToOrder" 
+                                    >COMPLETE
+                                    PURCHASE</button>
+
+                            </form>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- labtop -->
+        <div class="col-3 px-4 position-relative main ">
+
+            <div class="pt-3 scroll-down"">
+                <div class="d-flex justify-content-between px-1">
+                    <h1 class="fs-3 m-0 p-0 ">Items</h1>
+                    <p class="fs-6 m-0 p-0 d-flex align-items-center crsor" onclick="goToCard()">Edit cart</p>
+                </div>
+
+
+                <div class="inner-table scroll-down"></div>
+
+
+                <div class="d-flex justify-content-between position-absolute total_div">
+                    <p class="fs-3">Total</p>
+                    <p class="fs-3"><span class="total"></span> LE</p>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!-- mobile -->
+        <div class="sidebar position-absolute pt-2 bg-white mobile">
+
+            <div class="p-3 position-relative inner-sidebar ">
+                <div class="d-flex justify-content-between ">
+                    <h1 class="fs-3 m-0 p-0 ">Items</h1>
+                    <p class="fs-6 m-0 p-0 d-flex align-items-center crsor" onclick="goToCard()">Edit cart</p>
+                </div>
+                <div class="inner-table scroll-down"></div>
+                <div class="d-flex justify-content-between total_div position-absolute">
+                    <p class="fs-3">Total</p>
+                    <p class="fs-3"><span class="total"></span> LE</p>
+                </div>
+            </div>
+
+            <div class="position-absolute arrow-back beside">
+                <i class="fa-solid fa-angle-left left-right-arrow fs-3 "></i>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="../JS/itemsData.js"></script> -->
+    <script src="js/checkout.js"></script>
+</body>
+
+</html>

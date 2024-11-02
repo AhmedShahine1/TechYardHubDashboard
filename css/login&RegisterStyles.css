@@ -1,7 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 body {
   background-color: #1c1c1e;
   color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Playfair Display", serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,14 +41,5 @@ body {
 }
 
 .form-check-label {
-  color: #a1a1a3;
-}
-
-.link {
-  color: #0a84ff;
-  text-decoration: none;
-}
-
-.link:hover {
-  text-decoration: underline;
+  color: #ffffff;
 }/*# sourceMappingURL=login&RegisterStyles.css.map */

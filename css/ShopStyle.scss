@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+$primary-color: #007bff;
+$filter-bg: #f7f7f7;
+$card-bg: #ffffff;
+$card-border-radius: 5px;
+
+body {
+  background-color: #f0f0f0;
+  font-family: "Playfair Display", serif;
+
+  #announcementSection {
+    .carousel-inner {
+      img {
+        width: 100%; /* Set the width of the carousel images */
+        height: 300px; /* Set the custom height for the carousel */
+        object-fit: cover; /* Ensure the images maintain their aspect ratio */
+      }
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(
+        0,
+        0,
+        0,
+        0.5
+      ); /* Add a background color for visibility */
+      border-radius: 50%; /* Optional styling for rounded controls */
+    }
+  }
+}
+.products {
+  display: grid;
+  margin: 10px;
+  .Filter {
+    align-items: baseline;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: $primary-color;
+  }
+
+  select,
+  input[type="range"] {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .irs--round .irs-bar {
+    background-color: #00C2C0;
+ }
+ 
+ .irs--round .irs-handle {
+   background-color: #00C2C0;
+   border-color: #00C2C0;
+   box-shadow: 0px 0px 0px 5px rgba(0, 194, 192, 0.2);
+ }
+ 
+ .irs--round .irs-handle.state_hover, 
+ .irs--round .irs-handle:hover {
+    background-color: #00C2C0;
+ }
+ 
+ .irs--round .irs-handle {
+   width: 16px;
+   height: 16px;
+   top: 29px
+ }
+ 
+ .irs--round .irs-from, 
+ .irs--round .irs-to, 
+ .irs--round .irs-single {
+   background-color: transparent;
+   color: #666666;
+ }
+ 
+ .irs--round .irs-from:before, 
+ .irs--round .irs-to:before, 
+ .irs--round .irs-single:before,
+ .irs--round .irs-min, 
+ .irs--round .irs-max {
+   display: none;
+ }
+ 
+ 
+  #sortProducts {
+    width: auto;
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+
+    &.grid-3 .product-card {
+      width: calc(33.33% - 15px); /* Adjust for spacing */
+      margin: 7.5px; /* Adjust for spacing */
+      .card {
+        background-color: $card-bg;
+        border-radius: $card-border-radius;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        img {
+          height: 175px;
+        }
+        .backgroundImage {
+          padding: 50px;
+        }
+        &:hover {
+          margin-bottom: 5px;
+          transform: scale(1.05);
+          .backgroundImage {
+            transform: translateY(-10px); /* Move image up 10px */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Adds shadow below */
+          }
+          .card-body .btn {
+            height: 40px; /* Adjust based on desired height */
+            padding: 10px; /* Adjust padding as needed */
+          }
+        }
+    
+        .card-body {
+          padding: 0px;
+    
+          h5.card-title {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+            color: $primary-color;
+            font-weight: bold;
+          }
+    
+          p.card-text {
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-bottom: 5px;
+          }
+          .btn {
+            width: 100%; /* Full width */
+            height: 0; /* Initial height */
+            overflow: hidden; /* Hide text before hover */
+            transition: height 0.4s ease; /* Smooth transition for height */
+            padding: 0; /* Remove padding to keep it compact when collapsed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+          }
+        }
+      }    
+    }
+
+    &.grid-5 .product-card {
+      width: calc(20% - 15px); /* Adjust for spacing */
+      margin: 7.5px; /* Adjust for spacing */
+      .card {
+        background-color: $card-bg;
+        border-radius: $card-border-radius;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        img {
+          height: 150px;
+        }
+        .backgroundImage {
+          padding: 10px;
+        }
+        &:hover {
+          margin-bottom: 5px;
+          transform: scale(1.05);
+          .backgroundImage {
+            transform: translateY(-10px); /* Move image up 10px */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Adds shadow below */
+          }
+          .card-body .btn {
+            height: 40px; /* Adjust based on desired height */
+            padding: 10px; /* Adjust padding as needed */
+          }
+        }
+    
+        .card-body {
+          padding: 0px;
+    
+          h5.card-title {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+            color: $primary-color;
+            font-weight: bold;
+          }
+    
+          p.card-text {
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-bottom: 5px;
+          }
+          .btn {
+            width: 100%; /* Full width */
+            height: 0; /* Initial height */
+            overflow: hidden; /* Hide text before hover */
+            transition: height 0.4s ease; /* Smooth transition for height */
+            padding: 0; /* Remove padding to keep it compact when collapsed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+          }
+        }
+      }
+    
+    }
+
+    &.list-view {
+      flex-direction: column;
+      .card {
+        background-color: $card-bg;
+        border-radius: $card-border-radius;
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        img {
+          width: 175px;
+          height: 175px;
+        }
+        .backgroundImage {
+          padding: 50px;
+        }
+        &:hover {
+          margin-bottom: 5px;
+          transform: scale(1.05);
+          .backgroundImage {
+            transform: translateY(-10px); /* Move image up 10px */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Adds shadow below */
+          }
+          .card-body .btn {
+            height: 40px; /* Adjust based on desired height */
+            padding: 10px; /* Adjust padding as needed */
+          }
+        }
+    
+        .card-body {
+          padding: 0px;
+    
+          h5.card-title {
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+            color: $primary-color;
+            font-weight: bold;
+          }
+    
+          p.card-text {
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-bottom: 5px;
+          }
+          .btn {
+            width: 100%; /* Full width */
+            height: 0; /* Initial height */
+            overflow: hidden; /* Hide text before hover */
+            transition: height 0.4s ease; /* Smooth transition for height */
+            padding: 0; /* Remove padding to keep it compact when collapsed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+          }
+        }
+      }
+    
+      .list-item {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .card {
+    background-color: $card-bg;
+    border-radius: $card-border-radius;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    img {
+      height: 175px;
+    }
+    .backgroundImage {
+      padding: 50px;
+    }
+    &:hover {
+      margin-bottom: 5px;
+      transform: scale(1.05);
+      .backgroundImage {
+        transform: translateY(-10px); /* Move image up 10px */
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Adds shadow below */
+      }
+      .card-body .btn {
+        height: 40px; /* Adjust based on desired height */
+        padding: 10px; /* Adjust padding as needed */
+      }
+    }
+
+    .card-body {
+      padding: 0px;
+
+      h5.card-title {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        color: $primary-color;
+        font-weight: bold;
+      }
+
+      p.card-text {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 5px;
+      }
+      .btn {
+        width: 100%; /* Full width */
+        height: 0; /* Initial height */
+        overflow: hidden; /* Hide text before hover */
+        transition: height 0.4s ease; /* Smooth transition for height */
+        padding: 0; /* Remove padding to keep it compact when collapsed */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        border: none;
+      }
+    }
+  }
+
+  .carousel-item {
+    .row {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+
+      div {
+        background-color: $primary-color;
+        color: white;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 5px;
+        flex: 1;
+      }
+    }
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #f8f9fa;
+  border-left: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+}
+
+.close-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  float: right;
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    .row {
+      flex-direction: column;
+
+      div {
+        margin: 5px 0;
+      }
+    }
+  }
+  #layout3Col,
+  #layout5Col,
+  #layoutList {
+    display: none; /* Hide layout buttons on small screens */
+  }
+}

@@ -32,11 +32,7 @@ const CategoriesAPI = {
         try {
             const response = await fetch(`${BASE_URL}/Categories/AddCategory`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // Include authorization header if needed
-                },
-                body: JSON.stringify(categoryData),
+                body: categoryData,
             });
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -110,22 +106,22 @@ const ProductsAPI = {
         }
     },
 
-    async addProduct(productData) {
+    async addProduct(productDto) {
         try {
-            const response = await fetch(`${BASE_URL}/Products/AddProduct`, {
+            const response =await fetch(`${BASE_URL}/Products/AddProduct`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // Include authorization header if needed
-                },
-                body: JSON.stringify(productData),
-            });
+                body: productDto,
+                });                
+
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                const errorData = await response.statusText; // Attempt to parse error response
+                console.error("Error creating product:", errorData);
+                throw new Error(`HTTP error! Status: ${response.status} - ${errorData.message || 'No additional information available.'}`);
             }
+
             return await response.json();
         } catch (error) {
-            console.error("Error adding product:", error);
+            console.error("Error creating product:", error);
         }
     },
 
@@ -163,10 +159,45 @@ const ProductsAPI = {
         } catch (error) {
             console.error(`Error deleting product with ID ${id}:`, error);
         }
+    },
+
+    async getLaptops() {
+        try {
+            const response = await fetch(`${BASE_URL}/Products/Laptops`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error("Error fetching laptops:", error);
+        }
+    },
+
+    async getDesktops() {
+        try {
+            const response = await fetch(`${BASE_URL}/Products/Desktops`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error("Error fetching desktops:", error);
+        }
+    },
+
+    async getAccessories() {
+        try {
+            const response = await fetch(`${BASE_URL}/Products/Accessories`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error("Error fetching accessories:", error);
+        }
     }
 };
 
-// Account API
 const AccountAPI = {
     async registerCustomer(registerData) {
         try {
@@ -198,12 +229,19 @@ const AccountAPI = {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            return await response.json();
+            const result = await response.json();
+
+            // If login is successful, store the token in localStorage
+            if (result.status) {
+                localStorage.setItem('authToken', result.Data.Token);
+                localStorage.setItem('userRole', result.Data.Role);
+                localStorage.setItem('userProfileImage', result.Data.ProfileImage);
+            }
+            return result;
         } catch (error) {
             console.error("Error logging in:", error);
         }
     }
 };
 
-// Exporting the APIs
 export { CategoriesAPI, ProductsAPI, AccountAPI };

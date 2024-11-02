@@ -1,0 +1,355 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+body {
+  background-color: #f0f0f0;
+  font-family: "Playfair Display", serif;
+}
+body #announcementSection .carousel-inner img {
+  width: 100%; /* Set the width of the carousel images */
+  height: 300px; /* Set the custom height for the carousel */
+  -o-object-fit: cover;
+     object-fit: cover; /* Ensure the images maintain their aspect ratio */
+}
+body #announcementSection .carousel-control-prev-icon,
+body #announcementSection .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Add a background color for visibility */
+  border-radius: 50%; /* Optional styling for rounded controls */
+}
+
+.products {
+  display: grid;
+  margin: 10px;
+}
+.products .Filter {
+  align-items: baseline;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+.products label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #007bff;
+}
+.products select,
+.products input[type=range] {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.products .irs--round .irs-bar {
+  background-color: #00C2C0;
+}
+.products .irs--round .irs-handle {
+  background-color: #00C2C0;
+  border-color: #00C2C0;
+  box-shadow: 0px 0px 0px 5px rgba(0, 194, 192, 0.2);
+}
+.products .irs--round .irs-handle.state_hover,
+.products .irs--round .irs-handle:hover {
+  background-color: #00C2C0;
+}
+.products .irs--round .irs-handle {
+  width: 16px;
+  height: 16px;
+  top: 29px;
+}
+.products .irs--round .irs-from,
+.products .irs--round .irs-to,
+.products .irs--round .irs-single {
+  background-color: transparent;
+  color: #666666;
+}
+.products .irs--round .irs-from:before,
+.products .irs--round .irs-to:before,
+.products .irs--round .irs-single:before,
+.products .irs--round .irs-min,
+.products .irs--round .irs-max {
+  display: none;
+}
+.products #sortProducts {
+  width: auto;
+}
+.products .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.products .row.grid-3 .product-card {
+  width: calc(33.33% - 15px); /* Adjust for spacing */
+  margin: 7.5px; /* Adjust for spacing */
+}
+.products .row.grid-3 .product-card .card {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.products .row.grid-3 .product-card .card img {
+  height: 175px;
+}
+.products .row.grid-3 .product-card .card .backgroundImage {
+  padding: 50px;
+}
+.products .row.grid-3 .product-card .card:hover {
+  margin-bottom: 5px;
+  transform: scale(1.05);
+}
+.products .row.grid-3 .product-card .card:hover .backgroundImage {
+  transform: translateY(-10px); /* Move image up 10px */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Adds shadow below */
+}
+.products .row.grid-3 .product-card .card:hover .card-body .btn {
+  height: 40px; /* Adjust based on desired height */
+  padding: 10px; /* Adjust padding as needed */
+}
+.products .row.grid-3 .product-card .card .card-body {
+  padding: 0px;
+}
+.products .row.grid-3 .product-card .card .card-body h5.card-title {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  color: #007bff;
+  font-weight: bold;
+}
+.products .row.grid-3 .product-card .card .card-body p.card-text {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+}
+.products .row.grid-3 .product-card .card .card-body .btn {
+  width: 100%; /* Full width */
+  height: 0; /* Initial height */
+  overflow: hidden; /* Hide text before hover */
+  transition: height 0.4s ease; /* Smooth transition for height */
+  padding: 0; /* Remove padding to keep it compact when collapsed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+.products .row.grid-5 .product-card {
+  width: calc(20% - 15px); /* Adjust for spacing */
+  margin: 7.5px; /* Adjust for spacing */
+}
+.products .row.grid-5 .product-card .card {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.products .row.grid-5 .product-card .card img {
+  height: 150px;
+}
+.products .row.grid-5 .product-card .card .backgroundImage {
+  padding: 10px;
+}
+.products .row.grid-5 .product-card .card:hover {
+  margin-bottom: 5px;
+  transform: scale(1.05);
+}
+.products .row.grid-5 .product-card .card:hover .backgroundImage {
+  transform: translateY(-10px); /* Move image up 10px */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Adds shadow below */
+}
+.products .row.grid-5 .product-card .card:hover .card-body .btn {
+  height: 40px; /* Adjust based on desired height */
+  padding: 10px; /* Adjust padding as needed */
+}
+.products .row.grid-5 .product-card .card .card-body {
+  padding: 0px;
+}
+.products .row.grid-5 .product-card .card .card-body h5.card-title {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  color: #007bff;
+  font-weight: bold;
+}
+.products .row.grid-5 .product-card .card .card-body p.card-text {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+}
+.products .row.grid-5 .product-card .card .card-body .btn {
+  width: 100%; /* Full width */
+  height: 0; /* Initial height */
+  overflow: hidden; /* Hide text before hover */
+  transition: height 0.4s ease; /* Smooth transition for height */
+  padding: 0; /* Remove padding to keep it compact when collapsed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+.products .row.list-view {
+  flex-direction: column;
+}
+.products .row.list-view .card {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.products .row.list-view .card img {
+  width: 175px;
+  height: 175px;
+}
+.products .row.list-view .card .backgroundImage {
+  padding: 50px;
+}
+.products .row.list-view .card:hover {
+  margin-bottom: 5px;
+  transform: scale(1.05);
+}
+.products .row.list-view .card:hover .backgroundImage {
+  transform: translateY(-10px); /* Move image up 10px */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Adds shadow below */
+}
+.products .row.list-view .card:hover .card-body .btn {
+  height: 40px; /* Adjust based on desired height */
+  padding: 10px; /* Adjust padding as needed */
+}
+.products .row.list-view .card .card-body {
+  padding: 0px;
+}
+.products .row.list-view .card .card-body h5.card-title {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  color: #007bff;
+  font-weight: bold;
+}
+.products .row.list-view .card .card-body p.card-text {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+}
+.products .row.list-view .card .card-body .btn {
+  width: 100%; /* Full width */
+  height: 0; /* Initial height */
+  overflow: hidden; /* Hide text before hover */
+  transition: height 0.4s ease; /* Smooth transition for height */
+  padding: 0; /* Remove padding to keep it compact when collapsed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+.products .row.list-view .list-item {
+  margin-bottom: 15px;
+}
+.products .card {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.products .card img {
+  height: 175px;
+}
+.products .card .backgroundImage {
+  padding: 50px;
+}
+.products .card:hover {
+  margin-bottom: 5px;
+  transform: scale(1.05);
+}
+.products .card:hover .backgroundImage {
+  transform: translateY(-10px); /* Move image up 10px */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Adds shadow below */
+}
+.products .card:hover .card-body .btn {
+  height: 40px; /* Adjust based on desired height */
+  padding: 10px; /* Adjust padding as needed */
+}
+.products .card .card-body {
+  padding: 0px;
+}
+.products .card .card-body h5.card-title {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  color: #007bff;
+  font-weight: bold;
+}
+.products .card .card-body p.card-text {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+}
+.products .card .card-body .btn {
+  width: 100%; /* Full width */
+  height: 0; /* Initial height */
+  overflow: hidden; /* Hide text before hover */
+  transition: height 0.4s ease; /* Smooth transition for height */
+  padding: 0; /* Remove padding to keep it compact when collapsed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+.products .carousel-item .row {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+.products .carousel-item .row div {
+  background-color: #007bff;
+  color: white;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #f8f9fa;
+  border-left: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+}
+
+.close-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  float: right;
+}
+
+@media (max-width: 768px) {
+  .carousel-item .row {
+    flex-direction: column;
+  }
+  .carousel-item .row div {
+    margin: 5px 0;
+  }
+  #layout3Col,
+  #layout5Col,
+  #layoutList {
+    display: none; /* Hide layout buttons on small screens */
+  }
+}/*# sourceMappingURL=ShopStyle.css.map */
