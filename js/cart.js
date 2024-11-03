@@ -1,10 +1,11 @@
-// البيانات الأصلية
+import { CategoriesAPI } from "./api.js";
+
+// Original data
 const defaultItemsData = [
     {
         name: 'MacBook Pro 16-inch',
-        model: 'M1 Max', // مثال على الموديل
-        os: 'macOS Monterey', // مثال على نظام التشغيل
-
+        model: 'M1 Max',
+        os: 'macOS Monterey',
         image: `../Images/Macbook Pro 16 with iPhone 11 Pro Max Mockup.jpeg`,
         quantity: 1,
         oldPrice: 2500,
@@ -12,8 +13,8 @@ const defaultItemsData = [
     },
     {
         name: 'iMac 24-inch',
-        model: 'M1', // مثال على الموديل
-        os: 'macOS Big Sur', // مثال على نظام التشغيل
+        model: 'M1',
+        os: 'macOS Big Sur',
         image: `../Images/Apple_iMac_24__All-In-One_Computer__Apple_M1__8GB_RAM__256GB_SSD__macOS_Big_Sur__Blue__MJV93LL_A_-_Walmart_com-removebg-preview.png`,
         quantity: 1,
         oldPrice: 1299,
@@ -21,211 +22,216 @@ const defaultItemsData = [
     },
     {
         name: 'Mac Mini',
-        model: 'M1', // مثال على الموديل
-        os: 'macOS Big Sur', // مثال على نظام التشغيل
+        model: 'M1',
+        os: 'macOS Big Sur',
         image: `../Images/fixed___hi-res_icons_for_the_new_Mac_mini_2018-removebg-preview.png`,
         quantity: 1,
         oldPrice: 699,
         discount: 10
-    },
-    {
-        name: 'MacBook Keyboard Cover',
-        model: 'Universal Fit', // مثال على الموديل
-        os: 'N/A', // غير متاح، لأنه لا يتطلب نظام تشغيل
-        image: '../Images/MacBook Laptop Case Cover (1).jpeg',
-        quantity: 1,
-        oldPrice: 19,
-        discount: 10
     }
 ];
 
-// دالة لتخزين البيانات في localStorage
+// Function to store data in localStorage
 function storeItemsData() {
-    localStorage.setItem('itemsData', JSON.stringify(defaultItemsData)); // تخزين البيانات كنص
+    localStorage.setItem('itemsData', JSON.stringify(defaultItemsData));
 }
 
-// دالة لاسترجاع البيانات من localStorage
+// Function to retrieve data from localStorage
 function getItemsData() {
     const storedData = localStorage.getItem('itemsData');
-    if (storedData) {
-        return JSON.parse(storedData); // تحويل النص إلى كائنات جافا سكريبت
-    }
-    return defaultItemsData; // في حالة عدم وجود بيانات في localStorage، ارجع البيانات الافتراضية
+    return storedData ? JSON.parse(storedData) : defaultItemsData;
 }
 
-var itemsData = []
-// عند تحميل الصفحة
-document.addEventListener('DOMContentLoaded', function () {
-    storeItemsData(); // تخزين البيانات في localStorage
-    itemsData = getItemsData(); // استرجاع البيانات
-    console.log(itemsData); // استخدم البيانات كما تريد
-});
+let itemsData = [];
 
+// When the page loads
+$(document).ready(function () {
+    storeItemsData(); // Store data in localStorage
+    itemsData = getItemsData(); // Retrieve data
+    console.log(itemsData); // Use data as needed
 
+    $('#backToStore1, #backToStore2').on('click', function () {
+        window.location.href = 'index.html'; // Change 'index.html' to your main page link
+    });
 
+    // Change window size event
+    $(window).on('resize', function () {
+        const sidebar = $('.sidebar');
+        const mainContent = $('#mainContent');
+        const backArrow = $('#backArrow');
 
+        if ($(window).width() <= 768) {
+            sidebar.addClass('hidden'); // Hide sidebar on mobile
+            mainContent.addClass('expanded'); // Expand main content to take 100%
+            setTimeout(() => {
+                backArrow.addClass('show'); // Show back arrow
+            }, 300);
+        } else {
+            sidebar.removeClass('hidden'); // Show sidebar on larger screens
+            mainContent.removeClass('expanded'); // Restore original size of content
+            setTimeout(() => {
+                backArrow.removeClass('show'); // Hide back arrow
+            }, 0);
+        }
+        renderItems();
+    });
 
+    // Execute code on page load
+    const toggleSidebarBtn = $('#toggleSidebar');
+    const sidebar = $('#sidebar');
+    const closeSidebarBtn = $('#closeSidebar');
+    const sidebarCategoryList = $('#sidebar-category-list');
 
+    async function fetchCategories() {
+        try {
+            const categories = await CategoriesAPI.getAllCategories();
+            const categoryList = $('#category-list');
+            categoryList.empty(); // Clear existing categories
+            categories.forEach(category => {
+                const listItem = `<li><a href="Shop.html?Category=${category.name}">${category.name}</a></li>`;
+                categoryList.append(listItem);
+                sidebarCategoryList.append(listItem);
+            });
+        } catch (error) {
+            console.error("Error fetching categories:", error);
+        }
+    }
 
-document.getElementById('backToStore1').addEventListener('click', function () {
-    window.location.href = 'index.html'; // هنا قم بتغيير 'index.html' إلى رابط الصفحة الرئيسية الخاصة بك
-});
+    // Toggle sidebar visibility
+    toggleSidebarBtn.on('click', () => {
+        sidebar.toggleClass('show');
+    });
 
-document.getElementById('backToStore2').addEventListener('click', function () {
-    window.location.href = 'index.html'; // هنا قم بتغيير 'index.html' إلى رابط الصفحة الرئيسية الخاصة بك
-});
+    // Close sidebar when close button is clicked
+    closeSidebarBtn.on('click', () => {
+        sidebar.removeClass('show');
+    });
 
-// حدث لتغيير حجم النافذة
-window.addEventListener('resize', function () {
-    const sidebar = document.querySelector('.sidebar');
-    const mainContent = document.getElementById('mainContent');
-    const backArrow = document.getElementById('backArrow');
+    fetchCategories();
 
-    if (window.innerWidth <= 768) {
-        sidebar.classList.add('hidden'); // اجعل الشريط الجانبي مخفيًا على الأجهزة المحمولة
-        mainContent.classList.add('expanded'); // اجعل المحتوى الأساسي يأخذ 100%
+    if ($(window).width() <= 768) {
+        sidebar.addClass('hidden'); // Hide sidebar on mobile
+        mainContent.addClass('expanded'); // Expand main content to take 100%
         setTimeout(() => {
-            backArrow.classList.add('show'); // إضافة الفئة لإخفاء السهم
+            backArrow.addClass('show'); // Show back arrow
         }, 300);
     } else {
-        sidebar.classList.remove('hidden'); // إظهار الشريط الجانبي على الشاشات الأكبر
-        mainContent.classList.remove('expanded'); // استعادة الحجم الأصلي للمحتوى
+        sidebar.removeClass('hidden'); // Show sidebar on larger screens
+        mainContent.removeClass('expanded'); // Restore original size of content
         setTimeout(() => {
-            backArrow.classList.remove('show'); // إضافة الفئة لإخفاء السهم
+            backArrow.removeClass('show'); // Hide back arrow
         }, 0);
     }
+
     renderItems();
 });
 
-// تنفيذ الكود عند تحميل الصفحة
-window.addEventListener('load', function () {
-    const sidebar = document.querySelector('.sidebar');
-    const mainContent = document.getElementById('mainContent');
-    const backArrow = document.getElementById('backArrow');
+// When clicking on "x"
+$('.fa-xmark').on('click', function () {
+    const sidebar = $('.sidebar');
+    const mainContent = $('#mainContent');
+    const backArrow = $('#backArrow');
 
-    if (window.innerWidth <= 768) {
-        sidebar.classList.add('hidden'); // اجعل الشريط الجانبي مخفيًا على الأجهزة المحمولة
-        mainContent.classList.add('expanded'); // اجعل المحتوى الأساسي يأخذ 100%
-        setTimeout(() => {
-            backArrow.classList.add('show'); // إضافة الفئة لإخفاء السهم
-        }, 300);
-    } else {
-        sidebar.classList.remove('hidden'); // إظهار الشريط الجانبي على الشاشات الأكبر
-        mainContent.classList.remove('expanded'); // استعادة الحجم الأصلي للمحتوى
-        setTimeout(() => {
-            backArrow.classList.remove('show'); // إضافة الفئة لإخفاء السهم
-        }, 0);
-    }
-
-    renderItems();
-});
-
-
-
-// عند الضغط على "x"
-document.querySelector('.fa-xmark').addEventListener('click', function () {
-    const sidebar = document.querySelector('.sidebar');
-    const mainContent = document.getElementById('mainContent');
-    const backArrow = document.getElementById('backArrow');
-
-    sidebar.classList.add('hidden'); // إخفاء الشريط الجانبي
-    sidebar.classList.remove('expanded'); // إزالة فئة التوسيع
-    mainContent.classList.add('expanded'); // توسيع المحتوى الرئيسي ليأخذ 100%
+    sidebar.addClass('hidden'); // Hide sidebar
+    mainContent.addClass('expanded'); // Expand main content to take 100%
     setTimeout(() => {
-        backArrow.classList.add('show'); // إضافة الفئة لإخفاء السهم
+        backArrow.addClass('show'); // Show back arrow
     }, 300);
 });
 
-// عند الضغط على السهم للخلف
-document.getElementById('backArrow').addEventListener('click', function () {
-    const sidebar = document.querySelector('.sidebar');
-    const mainContent = document.getElementById('mainContent');
-    const backArrow = document.getElementById('backArrow');
+// When clicking on back arrow
+$('#backArrow').on('click', function () {
+    const sidebar = $('.sidebar');
+    const mainContent = $('#mainContent');
+    const backArrow = $('#backArrow');
 
-    sidebar.classList.remove('hidden'); // إظهار الشريط الجانبي
-    mainContent.classList.remove('expanded'); // استعادة الحجم الأصلي للمحتوى
+    sidebar.removeClass('hidden'); // Show sidebar
+    mainContent.removeClass('expanded'); // Restore original size of content
     setTimeout(() => {
-        backArrow.classList.remove('show'); // إضافة الفئة لإخفاء السهم
+        backArrow.removeClass('show'); // Hide back arrow
     }, 0);
 });
 
+let counter = $('#count');
+counter.html(itemsData.length);
 
-
-
-let counter = document.getElementById('count');
-counter.innerHTML = itemsData.length;
-
-// الحصول على عنصر الجدول حيث سيتم إدخال الصفوف
-
-let subtotalElements = document.querySelectorAll('.subtotal');
-let shippingElements = document.querySelectorAll('.shipping');
-let taxElements = document.querySelectorAll('.tax');
+// Get table element where rows will be inserted
+let subtotalElements = $('.subtotal');
+let shippingElements = $('.shipping');
+let taxElements = $('.tax');
 
 function getSubTotalValue() {
     let getSubtotal = 0;
-    for (let index = 0; index < itemsData.length; index++) {
-        const item = itemsData[index];
+    itemsData.forEach(item => {
         getSubtotal += (item.oldPrice * (1 - item.discount / 100)) * item.quantity;
-    }
+    });
     return getSubtotal;
 }
 
 function getPrice(getSubtotal = 0) {
-
     if (getSubtotal != 0) {
         getSubtotal = getSubTotalValue();
     }
 
-    // مثال على القيم
-    let subtotalValue = getSubtotal; // يمكنك تعيين القيمة الفعلية هنا
-    let shippingValue = 0.00; // قيمة الشحن
-    let taxValue = 39.00; // قيمة الضريبة
+    // Example values
+    let subtotalValue = getSubtotal;
+    let shippingValue = 0.00; // Shipping cost
+    let taxValue = 39.00; // Tax value
 
-    // تعيين القيم للعناصر باستخدام حلقة
-    subtotalElements.forEach(el => el.innerHTML = subtotalValue.toFixed(2)); // تعيين subtotal وتنسيقه إلى رقم عشري
-    shippingElements.forEach(el => el.innerHTML = shippingValue.toFixed(2)); // تعيين shipping وتنسيقه إلى رقم عشري
-    taxElements.forEach(el => el.innerHTML = taxValue.toFixed(2)); // تعيين tax وتنسيقه إلى رقم عشري
+    subtotalElements.each(function () {
+        $(this).html(subtotalValue.toFixed(2)); // Set subtotal and format to decimal
+    });
+    shippingElements.each(function () {
+        $(this).html(shippingValue.toFixed(2)); // Set shipping and format to decimal
+    });
+    taxElements.each(function () {
+        $(this).html(taxValue.toFixed(2)); // Set tax and format to decimal
+    });
 
-    // إذا كنت تريد التحقق من القيم
-    subtotalElements.forEach(el => console.log(el.innerHTML));
-    shippingElements.forEach(el => console.log(el.innerHTML));
-    taxElements.forEach(el => console.log(el.innerHTML));
+    // If you want to check the values
+    subtotalElements.each(function () {
+        console.log($(this).html());
+    });
+    shippingElements.each(function () {
+        console.log($(this).html());
+    });
+    taxElements.each(function () {
+        console.log($(this).html());
+    });
 
-    // حساب total وجمع القيم
-    let totalValue = subtotalValue + shippingValue + taxValue; // جمع القيم كأرقام
-    let totalElement = document.querySelectorAll('.total');
-    totalElement.forEach(el => el.innerHTML = totalValue.toFixed(2)); // تعيين total وتنسيقه إلى رقم عشري
-
+    // Calculate total and sum values
+    let totalValue = subtotalValue + shippingValue + taxValue; // Sum values as numbers
+    let totalElement = $('.total');
+    totalElement.each(function () {
+        $(this).html(totalValue.toFixed(2)); // Set total and format to decimal
+    });
 }
 
 function changeQuantity(index, change) {
-    if (itemsData[index].quantity + change > 0) { // التأكد من أن الكمية لا تصبح سلبية
-        itemsData[index].quantity += change; // تغيير الكمية
-        document.getElementById(`quantity-${index}`).textContent = itemsData[index].quantity; // تحديث العرض في DOM
-        localStorage.setItem('itemsData', JSON.stringify(itemsData)); // تخزين البيانات كنص
+    if (itemsData[index].quantity + change > 0) { // Ensure quantity doesn't become negative
+        itemsData[index].quantity += change; // Change quantity
+        $(`#quantity-${index}`).text(itemsData[index].quantity); // Update display in DOM
+        localStorage.setItem('itemsData', JSON.stringify(itemsData)); // Store data as text
     }
 
     getPrice(getSubTotalValue());
 }
 
-// دالة لإزالة العنصر
+// Function to remove item
 function removeItem(index) {
-    itemsData.splice(index, 1); // إزالة العنصر من المصفوفة
-    localStorage.setItem('itemsData', JSON.stringify(itemsData)); // تخزين البيانات كنص
+    itemsData.splice(index, 1); // Remove item from array
+    localStorage.setItem('itemsData', JSON.stringify(itemsData)); // Store data as text
 
-    renderItems(); // إعادة رسم العناصر
-    // counter.innerHTML = itemsData.length;
+    renderItems(); // Redraw items
 }
 
-var cartona = document.getElementById('inner-table');
+let cartona = $('#inner-table');
 
 function renderItems() {
     let getSubtotal = 0;
-    let content = ''; // متغير لتخزين محتوى الصفوف
-    for (let index = 0; index < itemsData.length; index++) {
-        const item = itemsData[index]; // الحصول على العنصر الحالي
-
-        // التحقق من حجم الشاشة لتحديد الشكل المناسب
+    let content = ''; // Variable to store row content
+    itemsData.forEach((item, index) => {
+        // Check screen size to determine appropriate layout
         if (window.innerWidth <= 768) { // إذا كانت الشاشة صغيرة
             content += `
             <div class="row my-3 px-3 ">
@@ -290,8 +296,8 @@ function renderItems() {
                 </div>
 
                 <div class="col-2 text-center ">
-<p>${(item.oldPrice * (1 - item.discount / 100)).toFixed(2)} LE</p>
- </div>
+                <p>${(item.oldPrice * (1 - item.discount / 100)).toFixed(2)} LE</p>
+                </div>
 
                 <div class="col-2 text-center d-flex justify-content-center">
                     <i class="fa-solid fa-xmark fs-3" onclick="removeItem(${index})"></i>
@@ -299,27 +305,25 @@ function renderItems() {
             </div>
             `;
         }
-        getSubtotal += (item.oldPrice * (1 - item.discount / 100)) * item.quantity;
+    });
 
+    if (content) {
+        if ($(window).width() <= 768) {
+            $('#responsive-table').show(); // Hide responsive table on mobile
+            $('#inner-table').hide(); // Show mobile layout
+        } else {
+            $('#inner-table').show(); // Hide mobile layout on larger screens
+            $('#responsive-table').hide(); // Show responsive table
+            cartona.html(content); // Append all items in the table
+        }
+    } else {
+        $('#inner-table, #responsive-table').hide(); // Hide both if no items are present
     }
-    getPrice(getSubtotal);
-    counter.innerHTML = itemsData.length;
 
-    cartona.innerHTML = content; // تعيين المحتوى النهائي للعنصر
+    getPrice(getSubtotal);
 }
 
-
-// رسم العناصر في البداية
-renderItems();
-
-
-// عند الضغط على الزر، إضافة تأثير الخروج
-const checkoutButtons = document.querySelectorAll('.goToCheckout');
-checkoutButtons.forEach(function (button) {
-    button.addEventListener('click', function (event) {
-        event.preventDefault();
-        window.location.href = '../HTML/checkout.html';
-    });
+// Trigger rendering of items on page load
+$(document).ready(function () {
+    renderItems();
 });
-
-// export default itemsData;

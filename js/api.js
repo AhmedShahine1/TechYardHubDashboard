@@ -28,6 +28,18 @@ const CategoriesAPI = {
         }
     },
 
+    async getProductsByCategoryId(categoryId) {
+        try {
+            const response = await fetch(`${BASE_URL}/Categories/GetProductsByCategory/${categoryId}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error(`Error fetching products for category ID ${categoryId}:`, error);
+        }
+    },
+    
     async addCategory(categoryData) {
         try {
             const response = await fetch(`${BASE_URL}/Categories/AddCategory`, {

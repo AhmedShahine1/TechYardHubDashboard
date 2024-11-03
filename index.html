@@ -4,61 +4,46 @@
 <head>
     <title>TECH YARD HUB</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- Sidebar for Categories -->
-    <div id="sidebar" class="sidebar">
-        <div class="sidebar-content">
-            <button id="closeSidebar" class="btn-close" aria-label="Close Sidebar"></button>
-            <ul id="sidebar-category-list"></ul>
-        </div>
+<!-- Sidebar for Categories -->
+<div id="sidebar" class="navsidebar">
+    <div class="sidebar-content">
+        <button id="closeSidebar" class="btn-close-sidebar" aria-label="Close Sidebar">
+            <i class="bi bi-x-lg"></i>
+        </button>
+        <ul id="sidebar-category-list"></ul>
+    </div>
+</div>
+
+<nav class="nav" id="0">
+    <div class="navbar-logo">
+        <a href="index.html">
+            <img src="assets/logo.png" alt="Logo">
+        </a>
     </div>
 
-    <nav id="0" style="display: flex;">
-        <div class="navbar-logo">
-            <img src="./assets/logo.png" alt="">
-        </div>
-        <button id="toggleSidebar" class="d-md-none btn btn-primary" aria-label="Open Sidebar">
-            ☰ Categories
-        </button>
-        <ul id="category-list">
-        </ul>
-        <div class="font-icon">
-            <svg width="150px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
-                fill="#ffffff">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                    <title>search</title>
-                    <desc>Created with Sketch Beta.</desc>
-                    <defs> </defs>
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-                        <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-256.000000, -1139.000000)"
-                            fill="#FFF">
-                            <path
-                                d="M269.46,1163.45 C263.17,1163.45 258.071,1158.44 258.071,1152.25 C258.071,1146.06 263.17,1141.04 269.46,1141.04 C275.75,1141.04 280.85,1146.06 280.85,1152.25 C280.85,1158.44 275.75,1163.45 269.46,1163.45 L269.46,1163.45 Z M287.688,1169.25 L279.429,1161.12 C281.591,1158.77 282.92,1155.67 282.92,1152.25 C282.92,1144.93 276.894,1139 269.46,1139 C262.026,1139 256,1144.93 256,1152.25 C256,1159.56 262.026,1165.49 269.46,1165.49 C272.672,1165.49 275.618,1164.38 277.932,1162.53 L286.224,1170.69 C286.629,1171.09 287.284,1171.09 287.688,1170.69 C288.093,1170.3 288.093,1169.65 287.688,1169.25 L287.688,1169.25 Z"
-                                id="search" sketch:type="MSShapeGroup"> </path>
-                        </g>
-                    </g>
-                </g>
-            </svg>
-            <svg width="150px" version="1.1" id="Capa_1" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 483.1 483.1">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                    <g>
-                        <path
-                            d="M434.55,418.7l-27.8-313.3c-0.5-6.2-5.7-10.9-12-10.9h-58.6c-0.1-52.1-42.5-94.5-94.6-94.5s-94.5,42.4-94.6,94.5h-58.6 c-6.2,0-11.4,4.7-12,10.9l-27.8,313.3c0,0.4,0,0.7,0,1.1c0,34.9,32.1,63.3,71.5,63.3h243c39.4,0,71.5-28.4,71.5-63.3 C434.55,419.4,434.55,419.1,434.55,418.7z M241.55,24c38.9,0,70.5,31.6,70.6,70.5h-141.2C171.05,55.6,202.65,24,241.55,24z M363.05,459h-243c-26,0-47.2-17.3-47.5-38.8l26.8-301.7h47.6v42.1c0,6.6,5.4,12,12,12s12-5.4,12-12v-42.1h141.2v42.1 c0,6.6,5.4,12,12,12s12-5.4,12-12v-42.1h47.6l26.8,301.8C410.25,441.7,389.05,459,363.05,459z">
-                        </path>
-                    </g>
-                </g>
-            </svg>
-        </div>
-    </nav>
+    <button id="toggleSidebar" class="d-md-none btn btn-primary" aria-label="Open Sidebar">
+        <i class="bi bi-list"></i>
+    </button>
+    <ul id="category-list"></ul>
+    
+    <div class="font-icon">
+        <!-- Cart Icon (SVG) -->
+        <a href="cart.html" class="icon-link">
+            <img src="assets/cart-shopping-svgrepo-com.png" alt="Cart" width="30" height="30">
+        </a>
+        <!-- Login Icon (PNG) -->
+        <a href="login.html" class="icon-link">
+            <img src="assets/login-2-svgrepo-com.png" alt="Login" width="30" height="30">
+        </a>
+    </div>
+</nav>
+
     <section class="slider-main">
         <div class="containe">
             <div class="slider-content-wrap">

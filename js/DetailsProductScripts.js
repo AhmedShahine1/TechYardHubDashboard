@@ -1,5 +1,35 @@
 import { CategoriesAPI, ProductsAPI } from "./api.js";
 $(document).ready(function () {
+  const toggleSidebarBtn = document.getElementById('toggleSidebar');
+  const sidebar = document.getElementById('sidebar');
+  const closeSidebarBtn = document.getElementById('closeSidebar');
+  const sidebarCategoryList = document.getElementById('sidebar-category-list');
+  // Fetch categories and populate both nav and sidebar
+  async function fetchCategories() {
+      try {
+          const categories = await CategoriesAPI.getAllCategories();
+          const categoryList = document.getElementById('category-list');
+          categoryList.innerHTML = ''; // Clear existing categories
+          categories.forEach(category => {
+              const listItem = `<li><a href="Shop.html?Category=${category.name}">${category.name}</a></li>`;
+              categoryList.insertAdjacentHTML('beforeend', listItem);
+              sidebarCategoryList.insertAdjacentHTML('beforeend', listItem);
+          });
+      } catch (error) {
+          console.error("Error fetching categories:", error);
+      }
+  }
+
+  // Toggle sidebar visibility
+  toggleSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('show');
+  });
+
+  // Close sidebar when close button is clicked
+  closeSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.remove('show');
+  });
+  fetchCategories();
   $(".tab-item").click(function () {
     // Remove active class from all tabs
     $(".tab-item").removeClass("active");
@@ -153,19 +183,18 @@ product.productDetailsImages.forEach((detailImage, index) => {
 }
 
 async function loadRelatedProducts(categoryId) {
-  const relatedProductsContainer = document.getElementById(
-    "relatedProductsContainer"
-  );
+  const relatedProductsContainer = document.getElementById("relatedProductsContainer");
   relatedProductsContainer.innerHTML = ""; // Clear existing related products
 
-  const relatedProducts = await CategoriesAPI.getCategoryById(categoryId)
+  const relatedProducts = await CategoriesAPI.getProductsByCategoryId(categoryId); // Use new API method
 
-  if (relatedProducts.products.length == 0) {
-    relatedProductsContainer.innerHTML = "<p>No related products found.</p>";
-    return;
+  if (!relatedProducts || relatedProducts.length === 0) {
+      relatedProductsContainer.innerHTML = "<p>No related products found.</p>";
+      return;
   }
-  createCarousel(relatedProducts.products);
+  createCarousel(relatedProducts); // Assuming createCarousel takes an array of products
 }
+
 function createCarousel(relatedProducts) {
   const screenWidth = window.innerWidth;
   const itemsPerSlide = screenWidth >= 768 ? 3 : 1; // 3 items on large screens, 1 item on small screens

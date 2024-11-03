@@ -16,7 +16,6 @@ $(document).ready(function () {
             const categories = await CategoriesAPI.getAllCategories();
             const categoryList = document.getElementById('category-list');
             categoryList.innerHTML = ''; // Clear existing categories
-            sidebarCategoryList.innerHTML = ''; // Clear existing sidebar categories
             renderCategories(categories, '#categories-container');
             categories.forEach(category => {
                 const listItem = `<li><a href="Shop.html?Category=${category.name}">${category.name}</a></li>`;
@@ -42,13 +41,17 @@ $(document).ready(function () {
         $(containerId).html('');  // Clear the container
 
         const categoryHtml = categories.map(category => `
-            <div class="product">
-                <img  src="${category.imageUrl}" alt="${category.name}" id="Outlines" class="category-image">
+            <div class="product" data-category="${category.name}">
+                <img src="${category.imageUrl}" alt="${category.name}" id="Outlines" class="category-image">
                 <span>${category.name}</span>
             </div>
         `).join('');
 
         $(containerId).append(categoryHtml);
+        $(`${containerId} .product`).on('click', function() {
+            const category = $(this).data('category');
+            window.location.href = `Shop.html?Category=${category}`;
+        });
     }
 
     // Call fetchCategories to load categories initially
